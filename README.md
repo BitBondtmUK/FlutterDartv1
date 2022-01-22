@@ -10,6 +10,8 @@ FlutterFlow projects are built to run on the Flutter _stable_ release.
 
 For projects with Firestore integration, you must first run the following commands to ensure the project compiles:
 
+### The command flutter does not work!!!
+
 ```
 flutter pub get
 flutter packages pub run build_runner build --delete-conflicting-outputs
