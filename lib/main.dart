@@ -111,12 +111,12 @@ class _NavBarPageState extends State<NavBarPage> {
         onTap: (i) => setState(() => _currentPage = tabs.keys.toList()[i]),
         backgroundColor: Color(0xFF546E7A),
         selectedItemColor: Colors.black,
-        unselectedItemColor: Color(0x00000000),
+        unselectedItemColor: Color(0xFF90CAF9),
         selectedBackgroundColor: Color(0xFF90CAF9),
         borderRadius: 8,
         itemBorderRadius: 8,
-        margin: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
-        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
+        margin: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
+        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
         width: double.infinity,
         elevation: 0,
         items: [
@@ -128,14 +128,14 @@ class _NavBarPageState extends State<NavBarPage> {
                   currentIndex == 0
                       ? FontAwesomeIcons.archway
                       : Icons.home_outlined,
-                  color: currentIndex == 0 ? Colors.black : Color(0x00000000),
+                  color: currentIndex == 0 ? Colors.black : Color(0xFF90CAF9),
                   size: 24,
                 ),
                 Text(
                   'Home',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 0 ? Colors.black : Color(0x00000000),
+                    color: currentIndex == 0 ? Colors.black : Color(0xFF90CAF9),
                     fontSize: 11.0,
                   ),
                 ),
@@ -150,14 +150,14 @@ class _NavBarPageState extends State<NavBarPage> {
                   currentIndex == 1
                       ? FontAwesomeIcons.ankh
                       : Icons.home_outlined,
-                  color: currentIndex == 1 ? Colors.black : Color(0x00000000),
+                  color: currentIndex == 1 ? Colors.black : Color(0xFF90CAF9),
                   size: 24,
                 ),
                 Text(
                   'LightKey',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: currentIndex == 1 ? Colors.black : Color(0x00000000),
+                    color: currentIndex == 1 ? Colors.black : Color(0xFF90CAF9),
                     fontSize: 11.0,
                   ),
                 ),
