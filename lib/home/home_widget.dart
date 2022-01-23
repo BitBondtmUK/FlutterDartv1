@@ -26,20 +26,21 @@ class _HomeWidgetState extends State<HomeWidget> {
       key: scaffoldKey,
       backgroundColor: Color(0x9342A5F5),
       body: SingleChildScrollView(
+        primary: false,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
               width: 380,
-              height: 80,
+              height: 50,
               decoration: BoxDecoration(
                 color: Color(0xFFEEEEEE),
               ),
               child: Image.asset(
                 'assets/images/lightwaveAPP.png',
                 width: 100,
-                height: 100,
-                fit: BoxFit.cover,
+                height: 50,
+                fit: BoxFit.fitWidth,
               ),
             ),
             Padding(
@@ -51,31 +52,28 @@ class _HomeWidgetState extends State<HomeWidget> {
                 children: [
                   Expanded(
                     child: Align(
-                      alignment: AlignmentDirectional(0, -0.05),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.05, 0),
-                              child: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                                child: Text(
-                                  'Optical Encryption',
-                                  style: FlutterFlowTheme.title1.override(
-                                    fontFamily: 'Roboto',
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                      alignment: AlignmentDirectional(0.1, 0.1),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0.05, 0),
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                              child: Text(
+                                'Optical Encryption',
+                                style: FlutterFlowTheme.title1.override(
+                                  fontFamily: 'Roboto',
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.normal,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -121,7 +119,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             child: Image.asset(
                               'assets/images/pic_fb8bc43f-459d-4ad4-9eae-f99e10c0840a.jpg',
                               width: 300,
-                              height: 200,
+                              height: 150,
                               fit: BoxFit.cover,
                             ),
                           ),

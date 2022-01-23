@@ -45,7 +45,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             ),
           ),
           Align(
-            alignment: AlignmentDirectional(-0.14, 0),
+            alignment: AlignmentDirectional(-0.14, 0.2),
             child: Container(
               width: double.infinity,
               height: 300,
