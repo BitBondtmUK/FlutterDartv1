@@ -17,7 +17,8 @@ class HomeWidget extends StatefulWidget {
 
 class _HomeWidgetState extends State<HomeWidget> {
   ApiCallResponse key;
-  String uploadedFileUrl = '';
+  String uploadedFileUrl1 = '';
+  String uploadedFileUrl2 = '';
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -116,11 +117,42 @@ class _HomeWidgetState extends State<HomeWidget> {
                         Expanded(
                           child: Align(
                             alignment: AlignmentDirectional(0, 0),
-                            child: Image.asset(
-                              'assets/images/pic_fb8bc43f-459d-4ad4-9eae-f99e10c0840a.jpg',
-                              width: 300,
-                              height: 150,
-                              fit: BoxFit.cover,
+                            child: InkWell(
+                              onTap: () async {
+                                final selectedMedia =
+                                    await selectMediaWithSourceBottomSheet(
+                                  context: context,
+                                  allowPhoto: true,
+                                  pickerFontFamily: 'Roboto',
+                                );
+                                if (selectedMedia != null &&
+                                    validateFileFormat(
+                                        selectedMedia.storagePath, context)) {
+                                  showUploadMessage(
+                                      context, 'Uploading file...',
+                                      showLoading: true);
+                                  final downloadUrl = await uploadData(
+                                      selectedMedia.storagePath,
+                                      selectedMedia.bytes);
+                                  ScaffoldMessenger.of(context)
+                                      .hideCurrentSnackBar();
+                                  if (downloadUrl != null) {
+                                    setState(
+                                        () => uploadedFileUrl1 = downloadUrl);
+                                    showUploadMessage(context, 'Success!');
+                                  } else {
+                                    showUploadMessage(
+                                        context, 'Failed to upload media');
+                                    return;
+                                  }
+                                }
+                              },
+                              child: Image.asset(
+                                'assets/images/pic_fb8bc43f-459d-4ad4-9eae-f99e10c0840a.jpg',
+                                width: 300,
+                                height: 150,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -213,7 +245,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               selectedMedia.storagePath, selectedMedia.bytes);
                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
                           if (downloadUrl != null) {
-                            setState(() => uploadedFileUrl = downloadUrl);
+                            setState(() => uploadedFileUrl2 = downloadUrl);
                             showUploadMessage(context, 'Success!');
                           } else {
                             showUploadMessage(
