@@ -1,12 +1,9 @@
-import '../auth/auth_util.dart';
 import '../backend/api_requests/api_calls.dart';
-import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,9 +17,7 @@ class HomeWidget extends StatefulWidget {
 
 class _HomeWidgetState extends State<HomeWidget> {
   ApiCallResponse key;
-  String uploadedFileUrl1 = '';
-  String uploadedFileUrl2 = '';
-  LightImagesRecord photoNonce;
+  String uploadedFileUrl = '';
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -123,43 +118,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                         Expanded(
                           child: Align(
                             alignment: AlignmentDirectional(0, 0),
-                            child: InkWell(
-                              onTap: () async {
-                                final selectedMedia =
-                                    await selectMediaWithSourceBottomSheet(
-                                  context: context,
-                                  allowPhoto: true,
-                                  backgroundColor: Color(0xFF42A5F5),
-                                  textColor: Colors.black,
-                                );
-                                if (selectedMedia != null &&
-                                    validateFileFormat(
-                                        selectedMedia.storagePath, context)) {
-                                  showUploadMessage(
-                                      context, 'Uploading file...',
-                                      showLoading: true);
-                                  final downloadUrl = await uploadData(
-                                      selectedMedia.storagePath,
-                                      selectedMedia.bytes);
-                                  ScaffoldMessenger.of(context)
-                                      .hideCurrentSnackBar();
-                                  if (downloadUrl != null) {
-                                    setState(
-                                        () => uploadedFileUrl1 = downloadUrl);
-                                    showUploadMessage(context, 'Success!');
-                                  } else {
-                                    showUploadMessage(
-                                        context, 'Failed to upload media');
-                                    return;
-                                  }
-                                }
-                              },
-                              child: Image.network(
-                                uploadedFileUrl2,
-                                width: 300,
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
+                            child: Image.asset(
+                              'assets/images/pic_fb8bc43f-459d-4ad4-9eae-f99e10c0840a.jpg',
+                              width: 300,
+                              height: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
@@ -231,55 +194,46 @@ class _HomeWidgetState extends State<HomeWidget> {
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                  child: InkWell(
-                    onTap: () async {
-                      final selectedMedia =
-                          await selectMediaWithSourceBottomSheet(
-                        context: context,
-                        allowPhoto: true,
-                        pickerFontFamily: 'Roboto',
-                      );
-                      if (selectedMedia != null &&
-                          validateFileFormat(
-                              selectedMedia.storagePath, context)) {
-                        showUploadMessage(context, 'Uploading file...',
-                            showLoading: true);
-                        final downloadUrl = await uploadData(
-                            selectedMedia.storagePath, selectedMedia.bytes);
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        if (downloadUrl != null) {
-                          setState(() => uploadedFileUrl2 = downloadUrl);
-                          showUploadMessage(context, 'Success!');
-                        } else {
-                          showUploadMessage(context, 'Failed to upload media');
-                          return;
+                Align(
+                  alignment: AlignmentDirectional(0, -0.05),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: InkWell(
+                      onTap: () async {
+                        final selectedMedia =
+                            await selectMediaWithSourceBottomSheet(
+                          context: context,
+                          allowPhoto: true,
+                          pickerFontFamily: 'Roboto',
+                        );
+                        if (selectedMedia != null &&
+                            validateFileFormat(
+                                selectedMedia.storagePath, context)) {
+                          showUploadMessage(context, 'Uploading file...',
+                              showLoading: true);
+                          final downloadUrl = await uploadData(
+                              selectedMedia.storagePath, selectedMedia.bytes);
+                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                          if (downloadUrl != null) {
+                            setState(() => uploadedFileUrl = downloadUrl);
+                            showUploadMessage(context, 'Success!');
+                          } else {
+                            showUploadMessage(
+                                context, 'Failed to upload media');
+                            return;
+                          }
                         }
-                      }
-
-                      final lightImagesCreateData = createLightImagesRecordData(
-                        optical: uploadedFileUrl2,
-                        photoUrl: uploadedFileUrl2,
-                      );
-                      final lightImagesRecordReference =
-                          LightImagesRecord.collection.doc();
-                      await lightImagesRecordReference
-                          .set(lightImagesCreateData);
-                      photoNonce = LightImagesRecord.getDocumentFromData(
-                          lightImagesCreateData, lightImagesRecordReference);
-
-                      setState(() {});
-                    },
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.asset(
-                        'assets/images/LightKeyLogoJPEG.jpg',
+                      },
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Image.asset(
+                          'assets/images/LightKeyLogoJPEG.jpg',
+                        ),
                       ),
                     ),
                   ),

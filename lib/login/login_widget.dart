@@ -202,7 +202,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             (r) => false,
                           );
                         },
-                        text: 'Get Started',
+                        text: 'Get LightKey',
                         options: FFButtonOptions(
                           width: 300,
                           height: 55,

@@ -61,12 +61,12 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null || displaySplashImage
-          ? Container(
-              color: Colors.transparent,
-              child: Builder(
-                builder: (context) => Image.asset(
-                  'assets/images/lightkeysampleB.png',
-                  fit: BoxFit.cover,
+          ? const Center(
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: CircularProgressIndicator(
+                  color: FlutterFlowTheme.primaryColor,
                 ),
               ),
             )
@@ -115,8 +115,8 @@ class _NavBarPageState extends State<NavBarPage> {
         selectedBackgroundColor: Color(0xFF90CAF9),
         borderRadius: 8,
         itemBorderRadius: 8,
-        margin: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
-        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
+        margin: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
         width: double.infinity,
         elevation: 0,
         items: [
