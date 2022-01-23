@@ -45,10 +45,10 @@ class _LoginWidgetState extends State<LoginWidget> {
             ),
           ),
           Align(
-            alignment: AlignmentDirectional(-0.14, 0.5),
+            alignment: AlignmentDirectional(-0.14, 0),
             child: Container(
               width: double.infinity,
-              height: 200,
+              height: 300,
               decoration: BoxDecoration(
                 color: Color(0x46444D59),
                 image: DecorationImage(
@@ -59,7 +59,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               child: Align(
-                alignment: AlignmentDirectional(0, 0.5),
+                alignment: AlignmentDirectional(0, -0.2),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                   child: Column(
