@@ -11,7 +11,7 @@ FlutterFlow projects are built to run on the Flutter _stable_ release.
 For projects with Firestore integration, you must first run the following commands to ensure the project compiles:
 
 ### Developer Note: You have to install the Flutter App, run it in your repository; you have to update your $PATH
-### and use flutter doctor to determine if your build is correct; install different SDKs including Android Studio.
+##  and use flutter doctor to determine if your build is correct; install different SDKs including Android Studio.
 
 ```
 flutter pub get
